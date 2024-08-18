@@ -1,0 +1,117 @@
+<main class="main">
+  <!-- Menu Section -->
+  <section id="menu" class="menu section">
+
+    <!-- Section Title -->
+    <div class="container section-title">
+      <h2>Iz maminih kuhinjskih zapisnika<br></h2>
+      <p><span class="description-title">Recepti</span></p>
+    </div>
+
+    <div class="container">
+      <!-- Navigation for Recipe Categories -->
+      <ul class="nav nav-tabs d-flex justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
+            <h4>Zalogajčići</h4>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
+            <h4>Obroci</h4>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
+            <h4>Salate</h4>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
+            <h4>Slastice</h4>
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <!-- Zalogajčići Section -->
+        <div class="tab-pane fade active show" id="menu-starters">
+          <div class="tab-header text-center">
+            <h3>Zalogajčići</h3>
+          </div>
+          <div class="row gy-5">
+            <div class="col-lg-4 menu-item">
+              <img src="assets/menu/menu-item-1.png" class="menu-img img-fluid" alt="Magnam Tiste" (click)="openModal('Magnam Tiste', 'Zalogajčići', 'Lorem, deren, trataro, filede, nerada', 'assets/menu/menu-item-1.png')">
+              <h4>Magnam Tiste</h4>
+              <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+            </div>
+            <!-- Add more starter items here -->
+          </div>
+        </div>
+
+        <!-- Obroci Section -->
+        <div class="tab-pane fade" id="menu-breakfast">
+          <div class="tab-header text-center">
+            <h3>Obroci</h3>
+          </div>
+          <div class="row gy-5">
+            <div class="col-lg-4 menu-item">
+              <img src="assets/menu/menu-item-2.png" class="menu-img img-fluid" alt="Cibus Bonorum" (click)="openModal('Cibus Bonorum', 'Obroci', 'Lorem ipsum dolor sit', 'assets/menu/menu-item-2.png')">
+              <h4>Cibus Bonorum</h4>
+              <p class="ingredients">Lorem ipsum dolor sit</p>
+            </div>
+            <!-- Add more obroci items here -->
+          </div>
+        </div>
+
+        <!-- Salate Section -->
+        <div class="tab-pane fade" id="menu-lunch">
+          <div class="tab-header text-center">
+            <h3>Salate</h3>
+          </div>
+          <div class="row gy-5">
+            <div class="col-lg-4 menu-item">
+              <img src="assets/menu/menu-item-3.png" class="menu-img img-fluid" alt="Salate Verde" (click)="openModal('Salate Verde', 'Salate', 'Fresh salad with mixed greens', 'assets/menu/menu-item-3.png')">
+              <h4>Salate Verde</h4>
+              <p class="ingredients">Fresh salad with mixed greens</p>
+            </div>
+            <!-- Add more salad items here -->
+          </div>
+        </div>
+
+        <!-- Slastice Section -->
+        <div class="tab-pane fade" id="menu-dinner">
+          <div class="tab-header text-center">
+            <h3>Slastice</h3>
+          </div>
+          <div class="row gy-5">
+            <div class="col-lg-4 menu-item">
+              <img src="assets/menu/menu-item-4.png" class="menu-img img-fluid" alt="Dulcis Pudding" (click)="openModal('Dulcis Pudding', 'Slastice', 'Sweet pudding with caramel', 'assets/menu/menu-item-4.png')">
+              <h4>Dulcis Pudding</h4>
+              <p class="ingredients">Sweet pudding with caramel</p>
+            </div>
+            <!-- Add more dessert items here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recipe Modal -->
+  <div class="modal" [class.show]="isModalOpen" tabindex="-1" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="close-button" (click)="closeModal()">X</button>
+      <div class="modal-body">
+        <div class="left-column">
+          <img [src]="modalRecipe.image" alt="Recipe Image" class="modal-img">
+        </div>
+        <div class="right-column">
+          <h1>{{ modalRecipe.name }}</h1>
+          <p><strong>Vrsta jela: </strong>{{ modalRecipe.type }}</p>
+          <p><strong>Sastojci:</strong> {{ modalRecipe.ingredients }}</p>
+          <p><strong>Priprema:</strong> {{ modalRecipe.preparation }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,40 @@
+<div class="container" style="background-color: #f8f9fa; padding: 40px 40px; border-radius: 10px; max-width: 800px; margin: auto;">
+
+  <form [formGroup]="recipeForm" (submit)="onSubmit()">  
+    <div class="mb-3">
+      <h1>Naziv jela:</h1>
+      <textarea formControlName="dishName" class="form-control" rows="1"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <h1>Odaberite vrstu jela:</h1>
+      <select formControlName="dishType" class="form-select">
+        <option value="Zalogajčići">Zalogajčići</option>
+        <option value="Obroci">Obroci</option>
+        <option value="Salate">Salate</option>
+        <option value="Slastice">Slastice</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <h1>Sastojci:</h1>
+      <textarea formControlName="ingredients" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <h1>Koraci pripreme:</h1>
+      <textarea formControlName="preparation" class="form-control" rows="5"></textarea>
+    </div>
+
+    <div class="mb-4">
+      <h1>Fotografija jela:</h1>
+      <!-- Remove formControlName, since file inputs are not directly bound to Angular forms -->
+      <input type="file" class="form-control" (change)="onFileSelected($event)">
+    </div>
+
+    <div class="mb-3" style="display: flex; justify-content: center;">
+      <button type="submit" class="btn custom-btn">Objavi recept</button>
+    </div>
+  </form>
+</div>
+
