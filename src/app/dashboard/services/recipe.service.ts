@@ -16,4 +16,14 @@ export class RecipeService {
     return this.http.post(this.apiUrl, recipeData);  // Sending FormData without setting 'Content-Type'
   }
 
+  // Method to fetch all recipes
+  getAllRecipes(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);  // Get all recipes
+  }
+
+    // Delete a recipe by ID
+    deleteRecipe(id: number): Observable<any> {
+      return this.http.delete(`${this.apiUrl}/${id}`);
+    }
+
 }

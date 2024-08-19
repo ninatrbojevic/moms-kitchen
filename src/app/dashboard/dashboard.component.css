@@ -1,14 +1,80 @@
 .custom-btn {
-    background-color: #c9685b;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1.25rem;
-    cursor: pointer;
-    /* Optional: Add border-radius for rounded corners */
-    border-radius: 5px;
-  }
-  
-  .custom-btn:hover {
-    background-color: #b75d4e; /* Optional: Darker shade for hover effect */
-  }
+  background-color: #c9685b;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  /* Optional: Add border-radius for rounded corners */
+  border-radius: 5px;
+}
+
+.header-container {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between h1 and button */
+  align-items: center;
+  margin-bottom: 10px; /* Vertically center items */
+}
+
+.header-title {
+  margin: 0; /* Remove default margins */
+}
+
+.table-container {
+  margin: 20px;
+}
+
+.actions-column {
+  width: 150px;
+  /* Set a fixed width for the actions column */
+}
+
+.actions-column button {
+  margin-left: 5px;
+  /* Add some margin between buttons */
+  border-radius: 50%;
+  /* Make buttons round */
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  /* Remove padding for equal height/width */
+  display: inline-flex;
+  /* Ensure buttons are inline and aligned next to each other */
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  /* Align vertically within the table cell */
+}
+
+.btn-edit {
+  background-color: #90ee90;
+  /* Light green */
+  border: none;
+  /* Remove border */
+  color: white;
+  /* White icon color */
+}
+
+.btn-delete {
+  background-color: #ce1212;
+  /* Custom red */
+  border: none;
+  /* Remove border */
+  color: white;
+  /* White icon color */
+}
+
+.btn-edit:hover {
+  background-color: #76c776;
+  /* Slightly darker green on hover */
+}
+
+.btn-delete:hover {
+  background-color: #b10e0e;
+  /* Slightly darker red on hover */
+}
+
+.bi {
+  font-size: 18px;
+  /* Adjust the size of the icons */
+}

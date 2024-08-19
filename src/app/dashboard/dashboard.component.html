@@ -1,40 +1,80 @@
-<div class="container" style="background-color: #f8f9fa; padding: 40px 40px; border-radius: 10px; max-width: 800px; margin: auto;">
+<div class="table-container">
 
-  <form [formGroup]="recipeForm" (submit)="onSubmit()">  
-    <div class="mb-3">
-      <h1>Naziv jela:</h1>
-      <textarea formControlName="dishName" class="form-control" rows="1"></textarea>
-    </div>
+  <div class="header-container">
+    <h1 class="header-title">Popis svih recepata</h1>
+    <p-button (click)="displayDialog = true" label="Novi recept" icon="bi bi-plus-circle-fill"
+      class="rounded-bold-button" />
+  </div>
 
-    <div class="mb-3">
-      <h1>Odaberite vrstu jela:</h1>
-      <select formControlName="dishType" class="form-select">
-        <option value="Zalogajčići">Zalogajčići</option>
-        <option value="Obroci">Obroci</option>
-        <option value="Salate">Salate</option>
-        <option value="Slastice">Slastice</option>
-      </select>
-    </div>
+  <p-dialog [(visible)]="displayDialog" [modal]="true" [style]="{ width: '50rem' }"
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+    <div class="container"
+      style="background-color: #f8f9fa; padding: 40px 40px; border-radius: 10px; max-width: 800px; margin: auto;">
 
-    <div class="mb-3">
-      <h1>Sastojci:</h1>
-      <textarea formControlName="ingredients" class="form-control" rows="3"></textarea>
-    </div>
+      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <h1>Naziv jela:</h1>
+          <textarea formControlName="dishName" class="form-control" rows="1"></textarea>
+        </div>
 
-    <div class="mb-3">
-      <h1>Koraci pripreme:</h1>
-      <textarea formControlName="preparation" class="form-control" rows="5"></textarea>
-    </div>
+        <div class="mb-3">
+          <h1>Odaberite vrstu jela:</h1>
+          <select formControlName="dishType" class="form-select">
+            <option value="Zalogajčići">Zalogajčići</option>
+            <option value="Obroci">Obroci</option>
+            <option value="Salate">Salate</option>
+            <option value="Slastice">Slastice</option>
+          </select>
+        </div>
 
-    <div class="mb-4">
-      <h1>Fotografija jela:</h1>
-      <!-- Remove formControlName, since file inputs are not directly bound to Angular forms -->
-      <input type="file" class="form-control" (change)="onFileSelected($event)">
-    </div>
+        <div class="mb-3">
+          <h1>Sastojci:</h1>
+          <textarea formControlName="ingredients" class="form-control" rows="3"></textarea>
+        </div>
 
-    <div class="mb-3" style="display: flex; justify-content: center;">
-      <button type="submit" class="btn custom-btn">Objavi recept</button>
+        <div class="mb-3">
+          <h1>Koraci pripreme:</h1>
+          <textarea formControlName="preparation" class="form-control" rows="5"></textarea>
+        </div>
+
+        <div class="mb-4">
+          <h1>Fotografija jela:</h1>
+          <input type="file" class="form-control" (change)="onFileSelected($event)">
+        </div>
+
+        <div class="mb-3" style="display: flex; justify-content: center;">
+          <button type="submit" class="btn custom-btn">Objavi recept</button>
+        </div>
+      </form>
     </div>
-  </form>
+  </p-dialog>
+
+  <p-table [value]="recipes">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Naziv jela</th>
+        <th>Vrsta jela</th>
+        <th>Sastojci</th>
+        <th>Koraci pripreme</th>
+        <th>Akcije</th> <!-- Column for the icons -->
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-recipe>
+      <tr>
+        <td>{{ recipe.dishName }}</td>
+        <td>{{ recipe.dishType }}</td>
+        <td>{{ recipe.ingredients }}</td>
+        <td>{{ recipe.preparation }}</td>
+        <td class="actions-column">
+          <!-- Edit and delete buttons with custom colors and rounded shape -->
+          <button type="button" class="btn btn-edit" (click)="onEditRecipe(recipe)">
+            <i class="bi bi-pencil"></i> <!-- Pencil icon for edit -->
+          </button>
+          <button type="button" class="btn btn-delete" (click)="onDeleteRecipe(recipe.id)">
+            <i class="bi bi-trash"></i> <!-- Trash icon for delete -->
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>
-
