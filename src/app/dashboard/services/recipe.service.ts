@@ -21,9 +21,14 @@ export class RecipeService {
     return this.http.get<any[]>(this.apiUrl);  // Get all recipes
   }
 
-    // Delete a recipe by ID
-    deleteRecipe(id: number): Observable<any> {
-      return this.http.delete(`${this.apiUrl}/${id}`);
-    }
+  // Delete a recipe by ID
+  deleteRecipe(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  updateRecipe(id: number, formData: FormData): Observable<any> {
+    return this.http.put(`${this.apiUrl}/recipes/${id}`, formData);
+  }
+
 
 }

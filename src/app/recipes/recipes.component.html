@@ -40,78 +40,82 @@
             <h3>Zalogajčići</h3>
           </div>
           <div class="row gy-5">
-            <div class="col-lg-4 menu-item">
-              <img src="assets/menu/menu-item-1.png" class="menu-img img-fluid" alt="Magnam Tiste" (click)="openModal('Magnam Tiste', 'Zalogajčići', 'Lorem, deren, trataro, filede, nerada', 'assets/menu/menu-item-1.png')">
-              <h4>Magnam Tiste</h4>
-              <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+            <div class="col-lg-4 menu-item" *ngFor="let recipe of recipes">
+              <img [src]="'data:image/jpeg;base64, ' + recipe.imageData " class="menu-img img-fluid" [alt]="recipe.dishName"
+                (click)="openModal(recipe)">
+              <h4>{{ recipe.dishName }}</h4>
+              <p class="ingredients">{{ recipe.ingredients }}</p>
             </div>
-            <!-- Add more starter items here -->
           </div>
         </div>
 
-        <!-- Obroci Section -->
+        <!-- Add similar sections for Obroci, Salate, and Slastice with respective tab-pane and IDs -->
+        <!-- Example for Obroci Section -->
         <div class="tab-pane fade" id="menu-breakfast">
           <div class="tab-header text-center">
             <h3>Obroci</h3>
           </div>
           <div class="row gy-5">
-            <div class="col-lg-4 menu-item">
-              <img src="assets/menu/menu-item-2.png" class="menu-img img-fluid" alt="Cibus Bonorum" (click)="openModal('Cibus Bonorum', 'Obroci', 'Lorem ipsum dolor sit', 'assets/menu/menu-item-2.png')">
-              <h4>Cibus Bonorum</h4>
-              <p class="ingredients">Lorem ipsum dolor sit</p>
+            <div class="col-lg-4 menu-item" *ngFor="let recipe of recipes">
+              <h4>{{ recipe.dishName }}</h4>
+              <img [src]="'data:image/jpeg;base64, ' + recipe.imageData " class="menu-img img-fluid" [alt]="recipe.dishName"
+                (click)="openModal(recipe)"/>
+              <p class="ingredients">{{ recipe.ingredients }}</p>
             </div>
-            <!-- Add more obroci items here -->
           </div>
         </div>
-
-        <!-- Salate Section -->
+        
         <div class="tab-pane fade" id="menu-lunch">
           <div class="tab-header text-center">
             <h3>Salate</h3>
           </div>
           <div class="row gy-5">
-            <div class="col-lg-4 menu-item">
-              <img src="assets/menu/menu-item-3.png" class="menu-img img-fluid" alt="Salate Verde" (click)="openModal('Salate Verde', 'Salate', 'Fresh salad with mixed greens', 'assets/menu/menu-item-3.png')">
-              <h4>Salate Verde</h4>
-              <p class="ingredients">Fresh salad with mixed greens</p>
+            <div class="col-lg-4 menu-item" *ngFor="let recipe of recipes">
+              <img [src]="'data:image/jpeg;base64, ' + recipe.imageData " class="menu-img img-fluid" [alt]="recipe.dishName"
+                (click)="openModal(recipe)">
+              <h4>{{ recipe.dishName }}</h4>
+              <p class="ingredients">{{ recipe.ingredients }}</p>
             </div>
-            <!-- Add more salad items here -->
           </div>
         </div>
 
-        <!-- Slastice Section -->
         <div class="tab-pane fade" id="menu-dinner">
           <div class="tab-header text-center">
             <h3>Slastice</h3>
           </div>
           <div class="row gy-5">
-            <div class="col-lg-4 menu-item">
-              <img src="assets/menu/menu-item-4.png" class="menu-img img-fluid" alt="Dulcis Pudding" (click)="openModal('Dulcis Pudding', 'Slastice', 'Sweet pudding with caramel', 'assets/menu/menu-item-4.png')">
-              <h4>Dulcis Pudding</h4>
-              <p class="ingredients">Sweet pudding with caramel</p>
+            <div class="col-lg-4 menu-item" *ngFor="let recipe of recipes">
+              <img [src]="'data:image/jpeg;base64, ' + recipe.imageData " class="menu-img img-fluid" [alt]="recipe.dishName"
+                (click)="openModal(recipe)">
+              <h4>{{ recipe.dishName }}</h4>
+              <p class="ingredients">{{ recipe.ingredients }}</p>
             </div>
-            <!-- Add more dessert items here -->
           </div>
         </div>
+
+        <!-- Repeat the above structure for Salate and Slastice sections -->
       </div>
     </div>
   </section>
 
-  <!-- Recipe Modal -->
-  <div class="modal" [class.show]="isModalOpen" tabindex="-1" (click)="closeModal()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <button class="close-button" (click)="closeModal()">X</button>
-      <div class="modal-body">
-        <div class="left-column">
-          <img [src]="modalRecipe.image" alt="Recipe Image" class="modal-img">
-        </div>
-        <div class="right-column">
-          <h1>{{ modalRecipe.name }}</h1>
-          <p><strong>Vrsta jela: </strong>{{ modalRecipe.type }}</p>
-          <p><strong>Sastojci:</strong> {{ modalRecipe.ingredients }}</p>
-          <p><strong>Priprema:</strong> {{ modalRecipe.preparation }}</p>
-        </div>
+  <p-dialog [(visible)]="isModalOpen" [modal]="true" [style]="{ width: '600px' }" header="{{ modalRecipe.name }}"
+    [closable]="false" (onHide)="closeModal()">
+    <ng-template pTemplate="header">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1>{{ modalRecipe.dishName }}</h1>
+        <button class="close-button" (click)="closeModal()">X</button>
+      </div>
+    </ng-template>
+
+    <div class="modal-body">
+      <div class="left-column">
+        <img [src]="'data:image/jpeg;base64, ' + modalRecipe.imageData " alt="Recipe Image" class="modal-img img-fluid">
+      </div>
+      <div class="right-column">
+        <p><strong>Vrsta jela: </strong>{{ modalRecipe.dishType }}</p>
+        <p><strong>Sastojci:</strong> {{ modalRecipe.ingredients }}</p>
+        <p><strong>Priprema:</strong> {{ modalRecipe.preparation }}</p>
       </div>
     </div>
-  </div>
+  </p-dialog>
 </main>
