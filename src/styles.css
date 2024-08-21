@@ -20,9 +20,6 @@
     --nav-color: #7f7f90;  /* The default color of the main navmenu links */
     --nav-hover-color: #ce1212; /* Applied to main navmenu links when they are hovered over or active */
     --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-    --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-    --nav-dropdown-color: #7f7f90; /* Used for navigation links of the dropdown items in the navigation menu. */
-    --nav-dropdown-hover-color: #ce1212; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
   }
   
   /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -75,25 +72,14 @@
     font-family: var(--heading-font);
   }
 
-  /* Button */
+  /*--------------------------------------------------------------
+  # New recipe button
+  --------------------------------------------------------------*/
 
   .new-recipe-button {
     background-color: #37373f;
     border-color: #37373f;
     border-radius: 10px;
-  }
-
-  
-  @keyframes pulsate-play-btn {
-    0% {
-      transform: scale(0.6, 0.6);
-      opacity: 1;
-    }
-  
-    100% {
-      transform: scale(1, 1);
-      opacity: 0;
-    }
   }
   
   /*--------------------------------------------------------------
@@ -122,33 +108,9 @@
     font-size: 36px;
   }
   
-  .header .btn-getstarted,
-  .header .btn-getstarted:focus {
-    color: var(--contrast-color);
-    background: var(--accent-color);
-    font-size: 14px;
-    padding: 8px 26px;
-    margin: 0;
-    border-radius: 50px;
-    transition: 0.3s;
-  }
-  
-  .header .btn-getstarted:hover,
-  .header .btn-getstarted:focus:hover {
-    color: var(--contrast-color);
-    text-decoration: none;
-    background: color-mix(in srgb, var(--accent-color), transparent 15%);
-  }
-  
   @media (max-width: 1200px) {
     .header .logo {
       order: 1;
-    }
-  
-    .header .btn-getstarted {
-      order: 2;
-      margin: 0 15px 0 0;
-      padding: 6px 20px;
     }
   
     .header .navmenu {
@@ -164,6 +126,7 @@
   # Navigation Menu
   --------------------------------------------------------------*/
   /* Desktop Navigation */
+  
   @media (min-width: 1200px) {
     .navmenu {
       padding: 0;
@@ -272,7 +235,6 @@
   
     .navmenu a,
     .navmenu a:focus {
-      color: var(--nav-dropdown-color);
       padding: 10px 20px;
       font-family: var(--nav-font);
       font-size: 17px;
@@ -303,12 +265,6 @@
     .navmenu a:focus i:hover {
       background-color: var(--accent-color);
       color: var(--contrast-color);
-    }
-  
-    .navmenu a:hover,
-    .navmenu .active,
-    .navmenu .active:focus {
-      color: var(--nav-dropdown-hover-color);
     }
   
     .navmenu .active i,
@@ -395,50 +351,6 @@
   .footer .copyright p {
     margin-bottom: 0;
   }
-  /*--------------------------------------------------------------
-  # Preloader
-  --------------------------------------------------------------*/
-  #preloader {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    overflow: hidden;
-    background-color: var(--background-color);
-    transition: all 0.6s ease-out;
-    width: 100%;
-    height: 100vh;
-  }
-  
-  #preloader:before,
-  #preloader:after {
-    content: "";
-    position: absolute;
-    border: 4px solid var(--accent-color);
-    border-radius: 50%;
-    animation: animate-preloader 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-  }
-  
-  #preloader:after {
-    animation-delay: -0.5s;
-  }
-  
-  @keyframes animate-preloader {
-    0% {
-      width: 10px;
-      height: 10px;
-      top: calc(50% - 5px);
-      left: calc(50% - 5px);
-      opacity: 1;
-    }
-  
-    100% {
-      width: 72px;
-      height: 72px;
-      top: calc(50% - 36px);
-      left: calc(50% - 36px);
-      opacity: 0;
-    }
-  }
   
   /*--------------------------------------------------------------
   # Scroll Top Button
@@ -472,56 +384,6 @@
     visibility: visible;
     opacity: 1;
     bottom: 15px;
-  }
-  
-  /*--------------------------------------------------------------
-  # Disable aos animation delay on mobile devices
-  --------------------------------------------------------------*/
-  @media screen and (max-width: 768px) {
-    [data-aos-delay] {
-      transition-delay: 0 !important;
-    }
-  }
-  
-  /*--------------------------------------------------------------
-  # Global Page Titles & Breadcrumbs
-  --------------------------------------------------------------*/
-  .page-title {
-    --background-color: color-mix(in srgb, var(--default-color), transparent 96%);
-    color: var(--default-color);
-    background-color: var(--background-color);
-    padding: 120px 0;
-    text-align: center;
-    position: relative;
-  }
-  
-  .page-title h1 {
-    font-size: 42px;
-    font-weight: 400;
-    margin-bottom: 10px;
-    font-family: var(--default-font);
-  }
-  
-  .page-title .breadcrumbs ol {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-    font-weight: 400;
-  }
-  
-  .page-title .breadcrumbs ol li+li {
-    padding-left: 10px;
-  }
-  
-  .page-title .breadcrumbs ol li+li::before {
-    content: "/";
-    display: inline-block;
-    padding-right: 10px;
-    color: color-mix(in srgb, var(--default-color), transparent 70%);
   }
   
   /*--------------------------------------------------------------
@@ -629,14 +491,6 @@
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
   }
   
-  .hero .btn-watch-video:hover i {
-    color: color-mix(in srgb, var(--accent-color), transparent 15%);
-  }
-  
-  .hero .animated {
-    animation: up-down 2s ease-in-out infinite alternate-reverse both;
-  }
-  
   @media (max-width: 640px) {
     .hero h1 {
       font-size: 28px;
@@ -649,20 +503,6 @@
       margin-bottom: 30px;
     }
   
-    .hero .btn-get-started,
-    .hero .btn-watch-video {
-      font-size: 13px;
-    }
-  }
-  
-  @keyframes up-down {
-    0% {
-      transform: translateY(10px);
-    }
-  
-    100% {
-      transform: translateY(-10px);
-    }
   }
 
   .d-flex {
@@ -681,8 +521,7 @@
   }
   
   .about .fst-italic {
-    color: color-mix(in srgb, var(--default-color), var(--contrast-color) 50%);
-  }
+    color: color-mix(in srgb, var(--default-color), var(--contrast-color) 50%);  }
   
   .about .content ul {
     list-style: none;
@@ -704,12 +543,6 @@
   
   .about .content p:last-child {
     margin-bottom: 0;
-  }
-  
-  .about .pulsating-play-btn {
-    position: absolute;
-    left: calc(50% - 47px);
-    top: calc(50% - 47px);
   }
   
   
@@ -790,48 +623,7 @@
     padding: 20px 30px;
   }
   
-  .contact .info-item .icon {
-    color: var(--contrast-color);
-    background-color: var(--accent-color);
-    width: 56px;
-    height: 56px;
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease-in-out;
-    border-radius: 50%;
-    margin-right: 15px;
-  }
-  
-  .contact .info-item h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0 0 5px 0;
-    font-family: var(--default-font);
-    color: color-mix(in srgb, var(--default-color), transparent 30%);
-  }
-  
-  .contact .info-item p {
-    padding: 0;
-    margin-bottom: 0;
-    font-size: 14px;
-  }
-  
-  .contact .info-item .social-links a {
-    font-size: 24px;
-    display: inline-block;
-    line-height: 1;
-    margin: 4px 6px 0 0;
-    transition: 0.3s;
-    color: color-mix(in srgb, var(--default-color), transparent 50%);
-  }
-  
-  .contact .info-item .social-links a:hover {
-    color: var(--accent-color);
-  }
-  
-  .contact .php-email-form {
+  .contact .email-form {
     background-color: var(--surface-color);
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
@@ -839,14 +631,14 @@
   }
   
   @media (max-width: 575px) {
-    .contact .php-email-form {
+    .contact .email-form {
       padding: 20px;
     }
   }
   
-  .contact .php-email-form input[type=text],
-  .contact .php-email-form input[type=email],
-  .contact .php-email-form textarea {
+  .contact .email-form input[type=text],
+  .contact .email-form input[type=email],
+  .contact .email-form textarea {
     color: var(--default-color);
     background-color: color-mix(in srgb, var(--surface-color), transparent 50%);
     border-color: color-mix(in srgb, var(--default-color), transparent 80%);
@@ -856,19 +648,19 @@
     border-radius: 0;
   }
   
-  .contact .php-email-form input[type=text]:focus,
-  .contact .php-email-form input[type=email]:focus,
-  .contact .php-email-form textarea:focus {
+  .contact .email-form input[type=text]:focus,
+  .contact .email-form input[type=email]:focus,
+  .contact .email-form textarea:focus {
     border-color: var(--accent-color);
   }
   
-  .contact .php-email-form input[type=text]::placeholder,
-  .contact .php-email-form input[type=email]::placeholder,
-  .contact .php-email-form textarea::placeholder {
+  .contact .email-form input[type=text]::placeholder,
+  .contact .email-form input[type=email]::placeholder,
+  .contact .email-form textarea::placeholder {
     color: color-mix(in srgb, var(--default-color), transparent 70%);
   }
   
-  .contact .php-email-form button[type=submit] {
+  .contact .email-form button[type=submit] {
     color: var(--contrast-color);
     background: var(--accent-color);
     border: 0;
@@ -877,13 +669,10 @@
     border-radius: 50px;
   }
   
-  .contact .php-email-form button[type=submit]:hover {
+  .contact .email-form button[type=submit]:hover {
     background: color-mix(in srgb, var(--accent-color), transparent 20%);
   }
   
-  /*--------------------------------------------------------------
-  # Recepies
-  --------------------------------------------------------------*/
   /*--------------------------------------------------------------
   # Menu Section
   --------------------------------------------------------------*/

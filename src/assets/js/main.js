@@ -1,17 +1,6 @@
-/**
-* Template Name: Yummy
-* Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
-* Updated: Jun 29 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 (function() {
     "use strict";
   
-    /**
-     * Apply .scrolled class to the body as the page is scrolled down
-     */
     function toggleScrolled() {
       const selectBody = document.querySelector('body');
       const selectHeader = document.querySelector('#header');
@@ -59,16 +48,6 @@
     });
   
     /**
-     * Preloader
-     */
-    const preloader = document.querySelector('#preloader');
-    if (preloader) {
-      window.addEventListener('load', () => {
-        preloader.remove();
-      });
-    }
-  
-    /**
      * Scroll top button
      */
     let scrollTop = document.querySelector('.scroll-top');
@@ -88,19 +67,6 @@
   
     window.addEventListener('load', toggleScrollTop);
     document.addEventListener('scroll', toggleScrollTop);
-  
-    /**
-     * Animation on scroll function and init
-     */
-    function aosInit() {
-      AOS.init({
-        duration: 600,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
-      });
-    }
-    window.addEventListener('load', aosInit);
   
     /**
      * Initiate glightbox
