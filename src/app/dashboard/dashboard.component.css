@@ -9,6 +9,28 @@
   border-radius: 5px;
 }
 
+.form-control:focus {
+  border-color: #c9685b !important;
+  box-shadow: 0 0 0 0.2rem rgba(201, 104, 91, 0.25) !important;
+}
+
+.form-select:focus {
+  border-color: #c9685b !important;
+  box-shadow: 0 0 0 0.2rem rgba(201, 104, 91, 0.25) !important;
+}
+
+/* Label colors */
+.form-label {
+  color: #c9685b !important;
+  margin-bottom: 0.5rem;
+}
+
+/* Checkbox styles */
+.form-check-input:checked {
+  background-color: #c9685b !important;
+  border-color: #c9685b !important;
+}
+
 .header-container {
   display: flex; /* Use flexbox for layout */
   justify-content: space-between; /* Space between h1 and button */

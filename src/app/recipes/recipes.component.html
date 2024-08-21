@@ -1,8 +1,6 @@
 <main class="main">
   <!-- Menu Section -->
   <section id="menu" class="menu section">
-
-    <!-- Section Title -->
     <div class="container section-title">
       <h2>Iz maminih kuhinjskih zapisnika<br></h2>
       <p><span class="description-title">Recepti</span></p>
@@ -40,7 +38,7 @@
             <h3>Zalogajčići</h3>
           </div>
           <div class="row gy-5">
-            <div class="col-lg-4 menu-item" *ngFor="let recipe of recipes">
+            <div class="col-lg-4 menu-item" *ngFor="let recipe of starters">
               <img [src]="'data:image/jpeg;base64, ' + recipe.imageData " class="menu-img img-fluid" [alt]="recipe.dishName"
                 (click)="openModal(recipe)">
               <h4>{{ recipe.dishName }}</h4>
@@ -49,28 +47,28 @@
           </div>
         </div>
 
-        <!-- Add similar sections for Obroci, Salate, and Slastice with respective tab-pane and IDs -->
-        <!-- Example for Obroci Section -->
+        <!-- Obroci Section -->
         <div class="tab-pane fade" id="menu-meals">
           <div class="tab-header text-center">
             <h3>Obroci</h3>
           </div>
           <div class="row gy-5">
-            <div class="col-lg-4 menu-item" *ngFor="let recipe of recipes">
+            <div class="col-lg-4 menu-item" *ngFor="let recipe of meals">
               <img [src]="'data:image/jpeg;base64, ' + recipe.imageData " class="menu-img img-fluid" [alt]="recipe.dishName"
-                (click)="openModal(recipe)"/>
-                <h4>{{ recipe.dishName }}</h4>
+                (click)="openModal(recipe)">
+              <h4>{{ recipe.dishName }}</h4>
               <p class="ingredients">{{ recipe.ingredients }}</p>
             </div>
           </div>
         </div>
-        
+
+        <!-- Salate Section -->
         <div class="tab-pane fade" id="menu-salads">
           <div class="tab-header text-center">
             <h3>Salate</h3>
           </div>
           <div class="row gy-5">
-            <div class="col-lg-4 menu-item" *ngFor="let recipe of recipes">
+            <div class="col-lg-4 menu-item" *ngFor="let recipe of salads">
               <img [src]="'data:image/jpeg;base64, ' + recipe.imageData " class="menu-img img-fluid" [alt]="recipe.dishName"
                 (click)="openModal(recipe)">
               <h4>{{ recipe.dishName }}</h4>
@@ -79,12 +77,13 @@
           </div>
         </div>
 
+        <!-- Slastice Section -->
         <div class="tab-pane fade" id="menu-deserts">
           <div class="tab-header text-center">
             <h3>Slastice</h3>
           </div>
           <div class="row gy-5">
-            <div class="col-lg-4 menu-item" *ngFor="let recipe of recipes">
+            <div class="col-lg-4 menu-item" *ngFor="let recipe of deserts">
               <img [src]="'data:image/jpeg;base64, ' + recipe.imageData " class="menu-img img-fluid" [alt]="recipe.dishName"
                 (click)="openModal(recipe)">
               <h4>{{ recipe.dishName }}</h4>
@@ -92,8 +91,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Repeat the above structure for Salate and Slastice sections -->
       </div>
     </div>
   </section>

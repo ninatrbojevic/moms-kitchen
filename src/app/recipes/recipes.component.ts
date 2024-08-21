@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';  // Import CommonModule
+import { CommonModule } from '@angular/common';
 import { DialogModule } from 'primeng/dialog';
 import { RecipeService } from '../dashboard/services/recipe.service';
-
 
 @Component({
   selector: 'app-recipes',
   standalone: true,
   imports: [CommonModule, DialogModule],
   templateUrl: './recipes.component.html',
-  styleUrl: './recipes.component.css'
+  styleUrls: ['./recipes.component.css']
 })
-
 export class RecipesComponent implements OnInit {
 
-  recipes: any[] = [];  // Store fetched recipes
+  // Separate arrays to store recipes by dish type
+  starters: any[] = [];
+  meals: any[] = [];
+  salads: any[] = [];
+  deserts: any[] = [];
 
   isModalOpen = false;  // For modal control
   modalRecipe: any = {};  // To hold recipe details for the modal
@@ -25,12 +27,35 @@ export class RecipesComponent implements OnInit {
     this.loadAllRecipes();  // Load recipes on component initialization
   }
 
-  // Load all recipes from the service
+  // Load all recipes from the service and sort by dish type
   loadAllRecipes(): void {
     this.recipeService.getAllRecipes().subscribe(
       (data) => {
         console.log('Fetched Recipes:', data);  // Log the fetched data
-        this.recipes = data;  // Bind fetched data to the recipes array
+
+        // Clear current arrays
+        this.starters = [];
+        this.meals = [];
+        this.salads = [];
+        this.deserts = [];
+
+        // Categorize recipes based on dish type
+        data.forEach(recipe => {
+          switch(recipe.dishType) {
+            case 'Zalogajčići':
+              this.starters.push(recipe);
+              break;
+            case 'Obroci':
+              this.meals.push(recipe);
+              break;
+            case 'Salate':
+              this.salads.push(recipe);
+              break;
+            case 'Slastice':
+              this.deserts.push(recipe);
+              break;
+          }
+        });
       },
       (error) => {
         console.error('Error fetching recipes:', error);
