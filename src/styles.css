@@ -96,58 +96,6 @@
     }
   }
   
-  /* PHP Email Form Messages
-  ------------------------------*/
-  .php-email-form .error-message {
-    display: none;
-    background: #df1529;
-    color: #ffffff;
-    text-align: left;
-    padding: 15px;
-    margin-bottom: 24px;
-    font-weight: 600;
-  }
-  
-  .php-email-form .sent-message {
-    display: none;
-    color: #ffffff;
-    background: #059652;
-    text-align: center;
-    padding: 15px;
-    margin-bottom: 24px;
-    font-weight: 600;
-  }
-  
-  .php-email-form .loading {
-    display: none;
-    background: var(--surface-color);
-    text-align: center;
-    padding: 15px;
-    margin-bottom: 24px;
-  }
-  
-  .php-email-form .loading:before {
-    content: "";
-    display: inline-block;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    margin: 0 10px -6px 0;
-    border: 3px solid var(--accent-color);
-    border-top-color: var(--surface-color);
-    animation: php-email-form-loading 1s linear infinite;
-  }
-  
-  @keyframes php-email-form-loading {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
   /*--------------------------------------------------------------
   # Global Header
   --------------------------------------------------------------*/
@@ -161,6 +109,7 @@
   
   .header .logo {
     line-height: 1;
+    margin-left: -500px;
   }
   
   .header .logo img {
@@ -290,20 +239,6 @@
       color: color-mix(in srgb, var(--nav-color) 80%, black 50%);
     }
   
-    .navmenu .dropdown .dropdown ul {
-      top: 0;
-      left: -90%;
-      visibility: hidden;
-    }
-  
-    .navmenu .dropdown .dropdown:hover>ul {
-      opacity: 1;
-      top: 0;
-      left: -100%;
-      visibility: visible;
-    }
-  }
-  
   /* Mobile Navigation */
   @media (max-width: 1199px) {
     .mobile-nav-toggle {
@@ -381,25 +316,6 @@
       background-color: var(--accent-color);
       color: var(--contrast-color);
       transform: rotate(180deg);
-    }
-  
-    .navmenu .dropdown ul {
-      position: static;
-      display: none;
-      z-index: 99;
-      padding: 10px 0;
-      margin: 10px 20px;
-      background-color: var(--nav-dropdown-background-color);
-      transition: all 0.5s ease-in-out;
-    }
-  
-    .navmenu .dropdown ul ul {
-      background-color: rgba(33, 37, 41, 0.1);
-    }
-  
-    .navmenu .dropdown>.dropdown-active {
-      display: block;
-      background-color: rgba(33, 37, 41, 0.03);
     }
   
     .mobile-nav-active {
@@ -798,9 +714,9 @@
   
   
   /*--------------------------------------------------------------
-  # Chefs Section
+  # Favorites Section
   --------------------------------------------------------------*/
-  .chefs .team-member {
+  .favorites .favorite-member {
     background-color: var(--surface-color);
     box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -809,12 +725,12 @@
     transition: 0.3s;
   }
   
-  .chefs .team-member .member-img {
+  .favorites .favorite-member .member-img {
     position: relative;
     overflow: hidden;
   }
   
-  .chefs .team-member .member-img:after {
+  .favorites .favorite-member .member-img:after {
     position: absolute;
     content: "";
     left: -1px;
@@ -829,25 +745,25 @@
     z-index: 1;
   }
   
-  .chefs .team-member .member-info {
+  .favorites .favorite-member .member-info {
     padding: 10px 15px 20px 15px;
   }
   
-  .chefs .team-member .member-info h4 {
+  .favorites .favorite-member .member-info h4 {
     font-weight: 700;
     margin-bottom: 5px;
     font-size: 20px;
     font-family: var(--default-font);
   }
   
-  .chefs .team-member .member-info span {
+  .favorites .favorite-member .member-info span {
     display: block;
     font-size: 14px;
     font-weight: 400;
     color: color-mix(in srgb, var(--default-color), transparent 50%);
   }
   
-  .chefs .team-member .member-info p {
+  .favorites .favorite-member .member-info p {
     font-style: italic;
     font-size: 14px;
     padding-top: 15px;
@@ -855,12 +771,12 @@
     color: color-mix(in srgb, var(--default-color), transparent 30%);
   }
   
-  .chefs .team-member:hover {
+  .favorites .favorite-member:hover {
     transform: scale(1.08);
     box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
   }
   
-  .chefs .team-member:hover .social {
+  .favorites .favorite-member:hover .social {
     right: 8px;
     opacity: 1;
   }
@@ -1071,3 +987,4 @@
     font-weight: 700;
     color: var(--accent-color);
   }
+}

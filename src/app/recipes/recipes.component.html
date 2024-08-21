@@ -57,9 +57,9 @@
           </div>
           <div class="row gy-5">
             <div class="col-lg-4 menu-item" *ngFor="let recipe of recipes">
-              <h4>{{ recipe.dishName }}</h4>
               <img [src]="'data:image/jpeg;base64, ' + recipe.imageData " class="menu-img img-fluid" [alt]="recipe.dishName"
                 (click)="openModal(recipe)"/>
+                <h4>{{ recipe.dishName }}</h4>
               <p class="ingredients">{{ recipe.ingredients }}</p>
             </div>
           </div>
@@ -98,7 +98,7 @@
     </div>
   </section>
 
-  <p-dialog [(visible)]="isModalOpen" [modal]="true" [style]="{ width: '600px' }" header="{{ modalRecipe.name }}"
+  <p-dialog [(visible)]="isModalOpen" [modal]="true" [style]="{ width: '1000px' }" header="{{ modalRecipe.name }}"
     [closable]="false" (onHide)="closeModal()">
     <ng-template pTemplate="header">
       <div class="d-flex justify-content-between align-items-center">
