@@ -13,7 +13,7 @@ import { ButtonModule } from 'primeng/button';
   standalone: true,
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  imports: [ReactiveFormsModule, CommonModule, TableModule, DialogModule, ButtonModule,ToastModule],
+  imports: [ReactiveFormsModule, CommonModule, TableModule, DialogModule, ButtonModule, ToastModule],
   providers: [MessageService],
 })
 export class DashboardComponent implements OnInit {
@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   selectedFile!: File | null;
   recipes: any[] = [];
   displayDialog: boolean = false;
+  selectedRecipeId: number | null = null;
 
 
   constructor(private recipeService: RecipeService, private messageService: MessageService) {
@@ -55,10 +56,9 @@ export class DashboardComponent implements OnInit {
     this.selectedFile = file ? file : null;
   }
 
-  // Submitting the form
   onSubmit(): void {
-    if (!this.selectedFile) {
-      this.messageService.add({ severity: 'warning', summary: 'Pogreška', detail: 'Fotografija jela je obavezna.' });
+    if (this.recipeForm.invalid) {
+      this.messageService.add({ severity: 'warning', summary: 'Pogreška', detail: 'Sva polja su obavezna.' });
       return;
     }
 
@@ -67,21 +67,48 @@ export class DashboardComponent implements OnInit {
     formData.append('DishType', this.recipeForm.get('dishType')?.value);
     formData.append('Ingredients', this.recipeForm.get('ingredients')?.value);
     formData.append('Preparation', this.recipeForm.get('preparation')?.value);
-    formData.append('Image', this.selectedFile);
 
-    this.recipeService.createNewRecipe(formData).subscribe(
-      (response) => {
-        this.messageService.add({ severity: 'success', summary: 'Uspjeh', detail: 'Uspješno objavljen recept.' });
-        this.loadAllRecipes();  // Reload recipes after successful submission
-      },
-      (error) => {
-        this.messageService.add({ severity: 'warning', summary: 'Pogreška', detail: 'Greška prilikom objave recepta.' });
-      }
-    );
+    if (this.selectedFile) {
+      formData.append('Image', this.selectedFile);
+    }
+
+    if (this.selectedRecipeId) {
+      // If selectedRecipeId is set, update the existing recipe
+      this.recipeService.updateRecipe(this.selectedRecipeId, formData).subscribe(
+        (response) => {
+          this.messageService.add({ severity: 'success', summary: 'Uspjeh', detail: 'Recept je uspješno ažuriran.' });
+          this.loadAllRecipes();  // Reload recipes after successful update
+          this.displayDialog = false;
+          this.selectedRecipeId = null;  // Clear the selectedRecipeId
+        },
+        (error) => {
+          this.messageService.add({ severity: 'error', summary: 'Pogreška', detail: 'Greška prilikom ažuriranja recepta.' });
+        }
+      );
+    } else {
+      // Otherwise, create a new recipe
+      this.recipeService.createNewRecipe(formData).subscribe(
+        (response) => {
+          this.messageService.add({ severity: 'success', summary: 'Uspjeh', detail: 'Recept je uspješno objavljen.' });
+          this.loadAllRecipes();  // Reload recipes after successful submission
+          this.displayDialog = false;
+        },
+        (error) => {
+          this.messageService.add({ severity: 'error', summary: 'Pogreška', detail: 'Greška prilikom objave recepta.' });
+        }
+      );
+    }
+
+    // Reset the form after submission
+    this.recipeForm.reset();
+    this.selectedFile = null;
   }
 
-  // Handle edit action
+
   onEditRecipe(recipe: any): void {
+    // Track the ID of the recipe being edited
+    this.selectedRecipeId = recipe.id;
+
     // Prepopulate the form with the selected recipe data
     this.recipeForm.setValue({
       dishName: recipe.dishName,

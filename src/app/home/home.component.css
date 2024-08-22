@@ -1,8 +1,18 @@
 .move-right {
-    margin-left: 150px; 
+    margin-left: 150px;
 }
 
 .move-down {
     margin-top: 50px;
 }
 
+.modal-img {
+    max-width: 100%;
+    /* Ensures image fits within modal */
+    height: auto;
+    /* Maintains aspect ratio */
+    max-height: 300px;
+    /* Set a maximum height for modal images */
+    object-fit: cover;
+    padding-bottom: 20px;
+}

@@ -43,7 +43,7 @@
               hranili našu obitelj. Želja nam je da ovi recepti budu dostupni svima vama, kako bi vam olakšali pripremu
               obroka ili dali ideju kada vam ponestane inspiracije.
             </p>
-<!-- 
+            <!-- 
             <div class="position-relative mt-4">
               <img src="assets/about2.jpeg" class="img-fluid" alt="">
             </div> -->
@@ -55,9 +55,8 @@
 
   </section><!-- /About Section -->
 
-  <!-- Favorites Section -->
+  <!-- favorites.component.html -->
   <section id="favorites" class="favorites section">
-
     <!-- Section Title -->
     <div class="container section-title">
       <h2>Favoriti</h2>
@@ -66,62 +65,53 @@
 
     <div class="container">
       <p class="fst-italic">Kao mama koja se raduje svaki put kad u kuhinji stvorim nešto posebno, želim vam predstaviti
-        tri recepta koja
-        su mi najdraža. Ova jela su mi posebno draga jer su rezultat mog osobnog truda i strasti u stvaranju
+        tri recepta koja su mi najdraža. Ova jela su mi posebno draga jer su rezultat mog osobnog truda i strasti u
+        stvaranju
         savršenstva. Svaki recept sam osmislila s puno ljubavi i pažnje, neprekidno dodajući začine i prilagođavajući ih
         kako bih postigla ono što smatram kulinarskom izvrsnošću.</p>
     </div>
 
     <div class="container">
-
       <div class="row gy-4">
-
-        <div class="col-lg-4 d-flex align-items-stretch">
-          <div class="favorite-member">
+        <div class="col-lg-4 d-flex align-items-stretch" *ngFor="let recipe of favoriteRecipes">
+          <div class="favorite-member" (click)="openModal(recipe)">
             <div class="member-img">
-              <img src="assets/menu/lepinje.jpg" class="img-fluid" alt="">
+              <img [src]="'data:image/jpeg;base64, ' + recipe.imageData" class="img-fluid">
             </div>
             <div class="member-info">
-              <h4>Lepinje</h4>
-              <span>Zalogajčići</span>
-              <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum
-                exercitationem iure minima enim corporis et voluptate.</p>
+              <h4>{{ recipe.dishName }}</h4>
+              <span>{{ recipe.dishType }}</span>
+              <p>{{ recipe.ingredients }}</p>
             </div>
           </div>
         </div><!-- End favorite member -->
-
-        <div class="col-lg-4 d-flex align-items-stretch">
-          <div class="favorite-member">
-            <div class="member-img">
-              <img src="assets/menu/licki.jpeg" class="img-fluid" alt="">
-            </div>
-            <div class="member-info">
-              <h4>Ličke šnicle</h4>
-              <span>Obroci</span>
-              <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis.
-                Voluptate sed quas reiciendis animi neque sapiente.</p>
-            </div>
-          </div>
-        </div><!-- End favorite member -->
-
-        <div class="col-lg-4 d-flex align-items-stretch">
-          <div class="favorite-member">
-            <div class="member-img">
-              <img src="assets/menu/pita_jabuka.jpg" class="img-fluid" alt="">
-            </div>
-            <div class="member-info">
-              <h4>Pita od jabuka</h4>
-              <span>Slastice</span>
-              <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut
-                architecto porro aspernatur molestiae modi.</p>
-            </div>
-          </div>
-        </div><!-- End favorite member-->
-
       </div>
-
     </div>
+
+    <p-dialog [(visible)]="isModalOpen" [modal]="true" [style]="{ width: '1000px' }"
+      header="{{ modalRecipe?.dishName }}" [closable]="false" (onHide)="closeModal()">
+      <ng-template pTemplate="header">
+        <div class="d-flex justify-content-between align-items-center">
+          <h1>{{ modalRecipe?.dishName }}</h1>
+          <button class="close-button" (click)="closeModal()">X</button>
+        </div>
+      </ng-template>
+
+      <div class="modal-body">
+        <div class="left-column">
+          <img [src]="'data:image/jpeg;base64, ' + modalRecipe?.imageData" alt="Recipe Image"
+            class="modal-img img-fluid">
+        </div>
+        <div class="right-column">
+          <p><strong>Vrsta jela: </strong>{{ modalRecipe?.dishType }}</p>
+          <p><strong>Sastojci:</strong> {{ modalRecipe?.ingredients }}</p>
+          <p><strong>Priprema:</strong> {{ modalRecipe?.preparation }}</p>
+        </div>
+      </div>
+    </p-dialog>
   </section><!-- /Favorites Section -->
+
+
 
   <!-- Contact Section -->
   <section id="contact" class="contact section">

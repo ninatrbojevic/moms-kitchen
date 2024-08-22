@@ -21,6 +21,11 @@ export class RecipeService {
     return this.http.get<any[]>(this.apiUrl);  // Get all recipes
   }
 
+  // Fetch a recipe by ID
+  getRecipeById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
   // Delete a recipe by ID
   deleteRecipe(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
