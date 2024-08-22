@@ -81,6 +81,20 @@
     border-color: #37373f;
     border-radius: 10px;
   }
+
+    /*--------------------------------------------------------------
+  # Close button
+  --------------------------------------------------------------*/
+
+  .close-button {
+    position: absolute;
+    top: 15px; /* Adjusted for larger modal */
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem; /* Increased size of the close button */
+    cursor: pointer;
+  }
   
   /*--------------------------------------------------------------
   # Global Header

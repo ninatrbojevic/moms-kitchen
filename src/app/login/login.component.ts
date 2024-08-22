@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ToastModule],
+  providers: [MessageService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -17,7 +20,7 @@ export class LoginComponent {
   password: string = '';
   rememberMe: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private messageService: MessageService) {}
 
   ngOnInit(): void {
     const storedEmail = localStorage.getItem('email');
@@ -31,22 +34,29 @@ export class LoginComponent {
   }
 
   login(): void {
-    const validEmail = 'user@example.com';
-    const validPassword = 'password123';
+    const validEmail = 'mom@kitchen.com';
+    const validPassword = 'kitchen123';
 
     if (this.email === validEmail && this.password === validPassword) {
-      this.router.navigate(['dashboard']);
+      // Show success message
+      this.messageService.add({ severity: 'success', summary: 'Uspjeh', detail: 'Uspješno ste se prijavili.' });
 
-      if (this.rememberMe) {
-        localStorage.setItem('email', this.email);
-        localStorage.setItem('password', this.password);
-      } else {
-        localStorage.removeItem('email');
-        localStorage.removeItem('password');
-      }
-      
+      // Add delay before navigating
+      setTimeout(() => {
+        if (this.rememberMe) {
+          localStorage.setItem('email', this.email);
+          localStorage.setItem('password', this.password);
+        } else {
+          localStorage.removeItem('email');
+          localStorage.removeItem('password');
+        }
+
+        // Navigate to the dashboard
+        this.router.navigate(['dashboard']);
+      }, 1000); // (1000 ms = 1 second)
+
     } else {
-      alert('Invalid email or password.');
+      this.messageService.add({ severity: 'error', summary: 'Pogreška', detail: 'Neispravan email ili lozinka.' });
     }
   }
 }
