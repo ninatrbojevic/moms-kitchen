@@ -2,12 +2,12 @@
 
   <div class="header-container">
     <h1 class="header-title">Popis svih recepata</h1>
-    <p-button styleClass="new-recipe-button" (click)="displayDialog = true" 
+    <p-button styleClass="new-recipe-button" (click)="showCreateDialog()" 
     label="Novi recept" icon="bi bi-plus-circle-fill"/>
   </div>
 
   <p-dialog [(visible)]="displayDialog" [modal]="true" [style]="{ width: '50rem' }"
-    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" (onHide)="clearForm()">
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
     <div class="container"
       style="background-color: #f8f9fa; padding: 40px 40px; border-radius: 10px; 
       max-width: 800px; margin: auto;">

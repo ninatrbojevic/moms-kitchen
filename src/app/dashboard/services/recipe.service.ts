@@ -32,7 +32,7 @@ export class RecipeService {
   }
 
   updateRecipe(id: number, formData: FormData): Observable<any> {
-    return this.http.put(`${this.apiUrl}/recipes/${id}`, formData);
+    return this.http.put(`${this.apiUrl}/${id}`, formData);
   }
 
 

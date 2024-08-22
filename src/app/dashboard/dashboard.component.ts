@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
       dishName: new FormControl('', Validators.required),
       dishType: new FormControl('', Validators.required),
       ingredients: new FormControl('', Validators.required),
-      preparation: new FormControl('', Validators.required),
+      preparation: new FormControl('', Validators.required)
     });
   }
 
@@ -48,6 +48,11 @@ export class DashboardComponent implements OnInit {
         this.messageService.add({ severity: 'error', summary: 'Pogreška', detail: 'Pogreška prilikom učitavanja recepata.' });
       }
     );
+  }
+
+  showCreateDialog(): void  {
+    this.recipeForm.reset();
+    this.displayDialog = true;
   }
 
   // Method to handle file selection
@@ -69,7 +74,7 @@ export class DashboardComponent implements OnInit {
     formData.append('Preparation', this.recipeForm.get('preparation')?.value);
 
     if (this.selectedFile) {
-      formData.append('Image', this.selectedFile);
+      formData.append('imageData', this.selectedFile);
     }
 
     if (this.selectedRecipeId) {
@@ -106,6 +111,11 @@ export class DashboardComponent implements OnInit {
 
 
   onEditRecipe(recipe: any): void {
+
+    this.recipeForm.reset();
+
+    this.selectedRecipeId = null;
+
     // Track the ID of the recipe being edited
     this.selectedRecipeId = recipe.id;
 
@@ -114,7 +124,7 @@ export class DashboardComponent implements OnInit {
       dishName: recipe.dishName,
       dishType: recipe.dishType,
       ingredients: recipe.ingredients,
-      preparation: recipe.preparation,
+      preparation: recipe.preparation
     });
 
     // Open the dialog
@@ -139,8 +149,4 @@ export class DashboardComponent implements OnInit {
       );
     }
   }
-
-  clearForm(): void {
-    this.recipeForm.reset();
-  } 
 }
