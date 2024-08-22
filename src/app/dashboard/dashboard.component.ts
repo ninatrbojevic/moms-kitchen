@@ -121,7 +121,8 @@ export class DashboardComponent implements OnInit {
     this.displayDialog = true;
 
     // Optional: Show a message for editing
-    this.messageService.add({ severity: 'info', summary: 'Uređivanje', detail: `Uređivanje recepta: ${recipe.dishName}` });
+    this.messageService.add({ severity: 'info', summary: 'Uređivanje', 
+      detail: `Uređivanje recepta: ${recipe.dishName}` });
   }
 
   // Handle delete action
@@ -138,4 +139,8 @@ export class DashboardComponent implements OnInit {
       );
     }
   }
+
+  clearForm(): void {
+    this.recipeForm.reset();
+  } 
 }
