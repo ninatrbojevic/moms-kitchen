@@ -99,7 +99,7 @@ export class DashboardComponent implements OnInit {
 
   // Handle delete action
   onDeleteRecipe(id: number): void {
-    if (confirm('Jeste sigurni da želite obrisati ovaj recepta?')) {
+    if (confirm('Jeste sigurni da želite obrisati ovaj recept?')) {
       this.recipeService.deleteRecipe(id).subscribe(
         () => {
           this.messageService.add({ severity: 'success', summary: 'Obrisano', detail: 'Recept je uspješno obrisan.' });

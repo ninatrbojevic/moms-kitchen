@@ -7,14 +7,16 @@
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="#hero" class="active">Početna<br></a></li>
-        <li><a href="#about">O meni</a></li>
-        <li><a href="#favorites">Moji favoriti</a></li>
-        <li><a href="recipes">Recepti</a></li>
-        <li><a href="#contact">Kontakt</a></li>
-        <li><a href="login">Prijava</a></li>
+        <li><a href="#hero" class="active" (click)="closeMobileMenu()">Početna</a></li>
+        <li><a href="#about" (click)="closeMobileMenu()">O meni</a></li>
+        <li><a href="#favorites" (click)="closeMobileMenu()">Moji favoriti</a></li>
+        <li><a href="recipes" (click)="closeMobileMenu()">Recepti</a></li>
+        <li><a href="#contact" (click)="closeMobileMenu()">Kontakt</a></li>
+        <li><a href="login" (click)="closeMobileMenu()">Prijava</a></li>
       </ul>
-      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list" (click)="toggleMobileMenu()" id="hamburger"></i>
+      <i class="mobile-nav-toggle d-xl-none bi bi-x" (click)="toggleMobileMenu()" id="close-icon"
+        style="display:none;"></i>
     </nav>
   </div>
 </header>
@@ -46,7 +48,7 @@
   </div>
 
   <div class="container copyright text-center mt-4">
-    <p>© <span>Copyright</span> <strong class="px-1 sitename">Mom's Kitchen</strong> <span>All Rights Reserved</span></p>
+    <p>© <span>Copyright</span> <strong class="px-1 sitename">Mom's Kitchen</strong> <span>All Rights Reserved</span>
+    </p>
   </div>
 </footer>
-
