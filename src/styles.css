@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
     --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --heading-font: "Amatic SC",  sans-serif;
+    --heading-font: "Nerko One",  sans-serif;
     --nav-font: "Inter",  sans-serif;
   }
   
@@ -72,6 +72,12 @@
     font-family: var(--heading-font);
   }
 
+  .nerko-one-regular {
+    font-family: "Nerko One", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
   /*--------------------------------------------------------------
   # New recipe button
   --------------------------------------------------------------*/
@@ -114,14 +120,6 @@
   .header .logo img {
     max-height: 36px;
     margin-right: 8px;
-  }
-  
-  .header .logo h1 {
-    font-size: 30px;
-    margin: 0;
-    font-weight: 700;
-    color: var(--heading-color);
-    font-family: var(--default-font);
   }
   
   .header .logo span {
@@ -188,7 +186,7 @@
       text-decoration: 	none;
       padding: 0 2px;
       font-family: var(--nav-font);
-      font-weight: 500;
+      font-weight: bold;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -496,7 +494,7 @@
   #hero h1 {
     font-size: 8rem; /* Larger font size */
     color: white; /* White text color */
-    font-weight: bolder;
+    font-weight: 400;
     margin-bottom: 10px; /* Margin to separate h1 and p */
     text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7); /* Text shadow for better contrast */
   }
@@ -504,6 +502,7 @@
   #hero p {
     font-size: 1.5rem; /* Font size for the paragraph */
     color: white; /* White text color */
+    font-weight: 600;
     margin-bottom: 20px; /* Space between paragraph and button */
     text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7); /* Text shadow for better contrast */
   }
