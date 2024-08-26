@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   recipes: any[] = [];
   displayDialog: boolean = false;
   selectedRecipeId: number | null = null;
-
+  selectedRecipe!: any;
 
   constructor(private recipeService: RecipeService, private messageService: MessageService) {
     this.recipeForm = new FormGroup({
@@ -45,13 +45,16 @@ export class DashboardComponent implements OnInit {
         this.recipes = data;
       },
       (error) => {
-        this.messageService.add({ severity: 'error', summary: 'Pogreška', detail: 'Pogreška prilikom učitavanja recepata.' });
+        this.messageService.add({ severity: 'error',
+          summary: 'Pogreška', detail: 'Pogreška prilikom učitavanja recepata.' });
       }
     );
   }
 
   showCreateDialog(): void  {
     this.recipeForm.reset();
+    this.selectedFile = null;
+    this.selectedRecipe = null;
     this.displayDialog = true;
   }
 
@@ -81,25 +84,29 @@ export class DashboardComponent implements OnInit {
       // If selectedRecipeId is set, update the existing recipe
       this.recipeService.updateRecipe(this.selectedRecipeId, formData).subscribe(
         (response) => {
-          this.messageService.add({ severity: 'success', summary: 'Uspjeh', detail: 'Recept je uspješno ažuriran.' });
+          this.messageService.add({ severity: 'success', summary: 'Uspjeh',
+            detail: 'Recept je uspješno ažuriran.' });
           this.loadAllRecipes();  // Reload recipes after successful update
           this.displayDialog = false;
           this.selectedRecipeId = null;  // Clear the selectedRecipeId
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Pogreška', detail: 'Greška prilikom ažuriranja recepta.' });
+          this.messageService.add({ severity: 'error', summary: 'Pogreška',
+            detail: 'Greška prilikom ažuriranja recepta.' });
         }
       );
     } else {
       // Otherwise, create a new recipe
       this.recipeService.createNewRecipe(formData).subscribe(
         (response) => {
-          this.messageService.add({ severity: 'success', summary: 'Uspjeh', detail: 'Recept je uspješno objavljen.' });
+          this.messageService.add({ severity: 'success', summary: 'Uspjeh',
+            detail: 'Recept je uspješno objavljen.' });
           this.loadAllRecipes();  // Reload recipes after successful submission
           this.displayDialog = false;
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Pogreška', detail: 'Greška prilikom objave recepta.' });
+          this.messageService.add({ severity: 'error', summary: 'Pogreška',
+            detail: 'Greška prilikom objave recepta.' });
         }
       );
     }
@@ -111,6 +118,8 @@ export class DashboardComponent implements OnInit {
 
 
   onEditRecipe(recipe: any): void {
+
+    this.selectedRecipe = recipe;
 
     this.recipeForm.reset();
 
@@ -131,7 +140,7 @@ export class DashboardComponent implements OnInit {
     this.displayDialog = true;
 
     // Optional: Show a message for editing
-    this.messageService.add({ severity: 'info', summary: 'Uređivanje', 
+    this.messageService.add({ severity: 'info', summary: 'Uređivanje',
       detail: `Uređivanje recepta: ${recipe.dishName}` });
   }
 
@@ -140,11 +149,13 @@ export class DashboardComponent implements OnInit {
     if (confirm('Jeste sigurni da želite obrisati ovaj recept?')) {
       this.recipeService.deleteRecipe(id).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Obrisano', detail: 'Recept je uspješno obrisan.' });
+          this.messageService.add({ severity: 'success',
+            summary: 'Obrisano', detail: 'Recept je uspješno obrisan.' });
           this.loadAllRecipes();  // Reload recipes after deletion
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Pogreška', detail: 'Pogreška pri brisanju recepta.' });
+          this.messageService.add({ severity: 'error',
+            summary: 'Pogreška', detail: 'Pogreška pri brisanju recepta.' });
         }
       );
     }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RecipeService {
 
-  private apiUrl = 'https://localhost:7121/api/recipes'; // Ensure this points to your API endpoint
+  private apiUrl = 'https://localhost:44342/api/recipes'; // Ensure this points to your API endpoint
 
   constructor(private http: HttpClient) { }
 
