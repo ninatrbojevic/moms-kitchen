@@ -276,7 +276,7 @@ h6 {
     font-family: var(--nav-font);
     font-size: 17px;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -572,7 +572,7 @@ section,
 }
 
 .about .fst-italic {
-  color: color-mix(in srgb, var(--default-color), var(--contrast-color) 50%);
+  color: color-mix(in srgb, var(--default-color), var(--contrast-color) 30%);
 }
 
 .about .content ul {
@@ -601,6 +601,10 @@ section,
 /*--------------------------------------------------------------
 # Favorites Section
 --------------------------------------------------------------*/
+.fst-italic {
+  color: color-mix(in srgb, var(--default-color), var(--contrast-color) 30%);
+}
+
 .favorites .favorite-member {
   background-color: var(--surface-color);
   box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
