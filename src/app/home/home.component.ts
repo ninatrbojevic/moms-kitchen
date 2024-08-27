@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
-    const ids = [15, 16, 17];
+    const ids = [18, 19, 17];
     ids.forEach(id => {
       this.recipeService.getRecipeById(id).subscribe(recipe => {
         this.favoriteRecipes.push(recipe);

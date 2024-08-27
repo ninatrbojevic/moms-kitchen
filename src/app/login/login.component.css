@@ -3,6 +3,10 @@
     background-color: #c9685b !important;
     border-color: #c9685b !important;
     color: white !important;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 50px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);;
   }
   
   /* Override link colors */
@@ -24,6 +28,7 @@
   .form-label {
     color: #c9685b !important;
     margin-bottom: 0.5rem;
+    font-weight: 500;
   }
   
   /* Checkbox styles */
@@ -31,9 +36,13 @@
     background-color: #c9685b !important;
     border-color: #c9685b !important;
   }
+
+  .form-text-check {
+    font-weight: 500;
+  }
   
   /* Divider color */
   hr {
-    border-top: 1px solid #c9685b !important;
+    border-top: 2px solid #c9685b !important;
   }
   

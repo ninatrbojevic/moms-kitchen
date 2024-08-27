@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
   --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Amatic SC", sans-serif;
+  --heading-font: "Nerko One", sans-serif;
   --nav-font: "Inter", sans-serif;
 }
 
@@ -70,6 +70,12 @@ h5,
 h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
+}
+
+.nerko-one-regular {
+  font-family: "Nerko One", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /*--------------------------------------------------------------
@@ -188,7 +194,7 @@ h6 {
     text-decoration: none;
     padding: 0 2px;
     font-family: var(--nav-font);
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -504,6 +510,7 @@ section,
 #hero p {
   font-size: 1.5rem; /* Font size for the paragraph */
   color: white; /* White text color */
+  font-weight: 500;
   margin-bottom: 20px; /* Space between paragraph and button */
   text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7); /* Text shadow for better contrast */
 }
@@ -513,7 +520,7 @@ section,
   background: var(--accent-color);
   font-weight: bold;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 20px;
   letter-spacing: 1px;
   display: inline-block;
   padding: 10px 28px 12px 28px;
@@ -709,6 +716,8 @@ section,
   color: var(--contrast-color);
   background: var(--accent-color);
   border: 0;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
   padding: 10px 30px;
   transition: 0.4s;
   border-radius: 50px;
@@ -753,7 +762,6 @@ section,
 
 .menu .nav-link h4 {
   font-size: 18px;
-  font-weight: 400;
   margin-top: 5px;
   margin-bottom: 0;
   font-family: var(--default-font);
@@ -788,8 +796,8 @@ section,
 }
 
 .menu .tab-content .tab-header h3 {
-  font-size: 48px;
-  font-weight: 700;
+  font-size: 45px;
+  font-weight: 500;
   color: var(--accent-color);
 }
 
@@ -798,22 +806,27 @@ section,
 }
 
 .menu .tab-content .menu-item .menu-img {
-  padding: 0 60px;
   cursor: pointer;
   margin-bottom: 15px;
+  max-width: 80%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .menu .tab-content .menu-item h4 {
   font-size: 24px;
-  font-weight: 400;
   margin-bottom: 5px;
   font-family: var(--default-font);
 }
 
 .menu .tab-content .menu-item .ingredients {
   font-family: var(--nav-font);
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
   margin-bottom: 5px;
+  font-style: italic;
+  font-size: 15px;
+  padding-top: 10px;
+  line-height: 26px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
 
 .menu .tab-content .menu-item .price {
