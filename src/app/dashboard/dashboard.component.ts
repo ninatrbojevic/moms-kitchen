@@ -7,13 +7,16 @@ import { MessageService } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  imports: [ReactiveFormsModule, CommonModule, TableModule, DialogModule, ButtonModule, ToastModule],
+  imports: [FormsModule, InputTextModule, ReactiveFormsModule, CommonModule, TableModule, DialogModule, ButtonModule, ToastModule],
   providers: [MessageService],
 })
 export class DashboardComponent implements OnInit {
@@ -23,6 +26,10 @@ export class DashboardComponent implements OnInit {
   displayDialog: boolean = false;
   selectedRecipeId: number | null = null;
   selectedRecipe!: any;
+
+  filteredRecipes: any[] = [];
+  searchQuery: string = '';
+
 
   constructor(private recipeService: RecipeService, private messageService: MessageService) {
     this.recipeForm = new FormGroup({
@@ -43,6 +50,7 @@ export class DashboardComponent implements OnInit {
     this.recipeService.getAllRecipes().subscribe(
       (data) => {
         this.recipes = data;
+        this.filteredRecipes = [...this.recipes]; // Initialize filteredRecipes with all recipes
       },
       (error) => {
         this.messageService.add({ severity: 'error',
@@ -57,6 +65,16 @@ export class DashboardComponent implements OnInit {
     this.selectedRecipe = null;
     this.displayDialog = true;
   }
+
+  filterRecipes(): void {
+    if (this.searchQuery.trim() === '') {
+        this.filteredRecipes = [...this.recipes]; // Show all recipes if the search query is empty
+    } else {
+        this.filteredRecipes = this.recipes.filter(recipe =>
+            recipe.dishName.toLowerCase().includes(this.searchQuery.toLowerCase())
+        );
+    }
+}
 
   // Method to handle file selection
   onFileSelected(event: any): void {

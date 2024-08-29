@@ -2,14 +2,20 @@
 
   <div class="header-container">
     <h1 class="header-title">Popis svih recepata</h1>
-    <p-button styleClass="new-recipe-button" (click)="showCreateDialog()"
-    label="Novi recept" icon="bi bi-plus-circle-fill"/>
+    <div class="actions">
+      <div class="search-bar-container">
+        <i class="bi bi-search search-icon"></i>
+        <input type="text" pInputText placeholder="Pretraži recepte" [(ngModel)]="searchQuery" (input)="filterRecipes()"
+          class="search-bar" />
+      </div>
+      <p-button styleClass="new-recipe-button" (click)="showCreateDialog()" label="Novi recept"
+        icon="bi bi-plus-circle-fill" />
+    </div>
   </div>
 
   <p-dialog [(visible)]="displayDialog" [modal]="true" [style]="{ width: '50rem' }"
     [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
-    <div class="container"
-      style="background-color: #f8f9fa; padding: 40px 40px; border-radius: 10px;
+    <div class="container" style="background-color: #f8f9fa; padding: 40px 40px; border-radius: 10px;
       max-width: 800px; margin: auto;">
 
       <form [formGroup]="recipeForm" (submit)="onSubmit()">
@@ -52,7 +58,7 @@
     </div>
   </p-dialog>
 
-  <p-table [value]="recipes">
+  <p-table [value]="filteredRecipes">
     <ng-template pTemplate="header">
       <tr>
         <th>Naziv jela</th>
@@ -80,5 +86,5 @@
       </tr>
     </ng-template>
   </p-table>
-  <p-toast position="bottom-right"/>
+  <p-toast position="bottom-right" />
 </div>
