@@ -12,7 +12,7 @@
   --heading-color: #37373f; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #ce1212; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --light-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -34,7 +34,7 @@
   --default-color: #ffffff;
   --heading-color: #ffffff;
   --surface-color: #37373f;
-  --contrast-color: #ffffff;
+  --light-color: #ffffff;
 }
 
 /* Smooth scroll */
@@ -302,7 +302,7 @@ h6 {
   .navmenu a i:hover,
   .navmenu a:focus i:hover {
     background-color: var(--accent-color);
-    color: var(--contrast-color);
+    color: var(--light-color);
   }
 
   .navmenu a:hover,
@@ -314,7 +314,7 @@ h6 {
   .navmenu .active i,
   .navmenu .active:focus i {
     background-color: var(--accent-color);
-    color: var(--contrast-color);
+    color: var(--light-color);
     transform: rotate(180deg);
   }
 
@@ -482,7 +482,7 @@ section,
 }
 
 .hero .btn-get-started {
-  color: var(--contrast-color);
+  color: var(--light-color);
   background: var(--accent-color);
   font-weight: bold;
   text-decoration: none;
@@ -493,11 +493,10 @@ section,
   border-radius: 50px;
   transition: 0.5s;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Text shadow for better contrast */
 }
 
 .hero .btn-get-started:hover {
-  color: var(--contrast-color);
+  color: var(--light-color);
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
 }
@@ -538,7 +537,7 @@ section,
 }
 
 .about .fst-italic {
-  color: color-mix(in srgb, var(--default-color), var(--contrast-color) 30%);
+  color: color-mix(in srgb, var(--default-color), var(--light-color) 30%);
 }
 
 .about .content ul {
@@ -568,7 +567,7 @@ section,
 # Favorites Section
 --------------------------------------------------------------*/
 .fst-italic {
-  color: color-mix(in srgb, var(--default-color), var(--contrast-color) 30%);
+  color: color-mix(in srgb, var(--default-color), var(--light-color) 30%);
 }
 
 .favorites .favorite-member {
@@ -683,11 +682,10 @@ section,
 }
 
 .contact .email-form button[type=submit] {
-  color: var(--contrast-color);
+  color: var(--light-color);
   background: var(--accent-color);
   border: 0;
   font-weight: bold;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
   padding: 10px 30px;
   transition: 0.4s;
   border-radius: 50px;

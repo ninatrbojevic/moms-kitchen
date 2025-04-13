@@ -1,17 +1,16 @@
 /* Custom button styles */
 .custom-button {
-    background-color: #c9685b !important;
-    border-color: #c9685b !important;
-    color: white !important;
+    background-color: #c9685b;
+    border-color: #c9685b;
+    color: white;
     font-weight: 600;
     font-size: 18px;
     border-radius: 50px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);;
   }
   
   /* Override link colors */
   a {
-    color: #c9685b !important;
+    color: #c9685b;
   }
   
   a:hover {
@@ -20,21 +19,21 @@
   
   /* Input focus styles */
   .form-control:focus {
-    border-color: #c9685b !important;
-    box-shadow: 0 0 0 0.2rem rgba(201, 104, 91, 0.25) !important;
+    border-color: #c9685b;
+    box-shadow: 0 0 0 0.2rem rgba(201, 104, 91, 0.25);
   }
   
   /* Label colors */
   .form-label {
-    color: #c9685b !important;
+    color: #c9685b;
     margin-bottom: 0.5rem;
     font-weight: 500;
   }
   
   /* Checkbox styles */
   .form-check-input:checked {
-    background-color: #c9685b !important;
-    border-color: #c9685b !important;
+    background-color: #c9685b;
+    border-color: #c9685b;
   }
 
   .form-text-check {
@@ -43,6 +42,6 @@
   
   /* Divider color */
   hr {
-    border-top: 2px solid #c9685b !important;
+    border-top: 2px solid #c9685b;
   }
   
