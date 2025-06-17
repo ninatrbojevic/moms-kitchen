@@ -7,12 +7,12 @@
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="#hero" class="active" (click)="closeMobileMenu()">Početna</a></li>
-        <li><a href="#about" (click)="closeMobileMenu()">O meni</a></li>
-        <li><a href="#favorites" (click)="closeMobileMenu()">Moji favoriti</a></li>
-        <li><a href="recipes" (click)="closeMobileMenu()">Recepti</a></li>
-        <li><a href="#contact" (click)="closeMobileMenu()">Kontakt</a></li>
-        <li><a href="login" (click)="closeMobileMenu()">Prijava</a></li>
+        <li><a href="#hero" [class.active]="activeLink === '#hero'" (click)="setActive('#hero'); closeMobileMenu()">Početna</a></li>
+        <li><a href="#about" [class.active]="activeLink === '#about'" (click)="setActive('#about'); closeMobileMenu()">O meni</a></li>
+        <li><a href="#favorites" [class.active]="activeLink === '#favorites'" (click)="setActive('#favorites'); closeMobileMenu()">Moji favoriti</a></li>
+        <li><a href="recipes" [class.active]="activeLink === 'recipes'" (click)="setActive('recipes'); closeMobileMenu()">Recepti</a></li>
+        <li><a href="#contact" [class.active]="activeLink === '#contact'" (click)="setActive('#contact'); closeMobileMenu()">Kontakt</a></li>
+        <li><a href="login" [class.active]="activeLink === 'login'" (click)="setActive('login'); closeMobileMenu()">Prijava</a></li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list" (click)="toggleMobileMenu()" id="hamburger"></i>
       <i class="mobile-nav-toggle d-xl-none bi bi-x" (click)="toggleMobileMenu()" id="close-icon"

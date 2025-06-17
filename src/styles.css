@@ -223,13 +223,12 @@ h6 {
     transition: all 0.3s ease-in-out 0s;
   }
 
-  .navmenu a:hover:before,
-  .navmenu li:hover > a:before,
-  .navmenu .active:before {
+  .navmenu > ul > li > a:hover:before,
+  .navmenu > ul > li > a.active:before {
     visibility: visible;
     width: 100%;
   }
-
+  
   .navmenu li:hover > a,
   .navmenu .active,
   .navmenu .active:focus {
