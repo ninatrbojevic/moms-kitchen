@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   activeLink: string = '#hero';
 
   constructor(private renderer: Renderer2, private router: Router) {
-    // 🔁 Praćenje promjene rute
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
@@ -44,7 +43,6 @@ export class AppComponent implements OnInit {
     this.activeLink = link;
   }
 
-  // 👇 Praćenje scrollanja (Intersection Observer)
   setupScrollSpy() {
     const sections = ['#hero', '#about', '#favorites', '#contact'];
     const observerOptions = {
@@ -58,7 +56,6 @@ export class AppComponent implements OnInit {
         if (entry.isIntersecting) {
           const routePath = this.router.url;
 
-          // Ne mijenjaj link ako si na stranici /recipes ili /login
           if (!routePath.includes('/recipes') && !routePath.includes('/login')) {
             this.activeLink = '#' + entry.target.id;
           }
@@ -66,7 +63,6 @@ export class AppComponent implements OnInit {
       });
     }, observerOptions);
 
-    // Aktiviraj observer za sve sekcije
     sections.forEach(selector => {
       const section = document.querySelector(selector);
       if (section) {
