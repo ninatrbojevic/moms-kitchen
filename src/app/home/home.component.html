@@ -118,37 +118,39 @@
   <section id="contact" class="contact section">
 
     <!-- Section Title -->
-    <div class="container section-title">
-      <h2>kontakt</h2>
-      <p><span class="description-title">Postavite mi pitanje</span></p>
-    </div><!-- End Section Title -->
+    <div class="container">
+      <div class="section-title">
+        <h2>kontakt</h2>
+        <p><span class="description-title">Postavite mi pitanje</span></p>
+      </div><!-- End Section Title -->
 
-    <form action="https://formspree.io/f/mjkbrjlq" method="post" class="email-form">
-      <div class="row gy-4">
+      <form action="https://formspree.io/f/mjkbrjlq" method="post" class="email-form">
+        <div class="row gy-4">
 
-        <div class="col-md-6">
-          <input type="text" name="name" class="form-control" placeholder="Ime" required="">
+          <div class="col-md-6">
+            <input type="text" name="name" class="form-control" placeholder="Ime" required="">
+          </div>
+
+          <div class="col-md-6 ">
+            <input type="email" class="form-control" name="email" placeholder="Email" required="">
+          </div>
+
+          <div class="col-md-12">
+            <input type="text" class="form-control" name="subject" placeholder="Predmet" required="">
+          </div>
+
+          <div class="col-md-12">
+            <textarea class="form-control" name="message" rows="6" placeholder="Poruka" required=""></textarea>
+          </div>
+
+          <div class="col-md-12 text-center">
+            <button type="submit">Pošalji poruku</button>
+          </div>
+
         </div>
-
-        <div class="col-md-6 ">
-          <input type="email" class="form-control" name="email" placeholder="Email" required="">
-        </div>
-
-        <div class="col-md-12">
-          <input type="text" class="form-control" name="subject" placeholder="Predmet" required="">
-        </div>
-
-        <div class="col-md-12">
-          <textarea class="form-control" name="message" rows="6" placeholder="Poruka" required=""></textarea>
-        </div>
-
-        <div class="col-md-12 text-center">
-          <button type="submit">Pošalji poruku</button>
-        </div>
-
-      </div>
-    </form><!-- End Contact Form -->
-
+      </form><!-- End Contact Form -->
+  </div>
   </section><!-- /Contact Section -->
+
 
 </main>
