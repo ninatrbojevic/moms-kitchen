@@ -49,7 +49,7 @@
           <div *ngIf="selectedRecipeId != null">
             <img class="recipe-image-preview" [src]="'data:image/jpeg;base64, ' + selectedRecipe.imageData " alt="">
           </div>
-          <input type="file" class="form-control" (change)="onFileSelected($event)">
+          <input id="fileInput" type="file" class="form-control" (change)="onFileSelected($event)">
         </div>
         <div class="mb-3" style="display: flex; justify-content: center;">
           <button type="submit" class="btn custom-btn">Objavi recept</button>

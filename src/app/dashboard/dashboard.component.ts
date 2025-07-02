@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RecipeService } from './services/recipe.service';
 import { CommonModule } from '@angular/common';
@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
   filteredRecipes: any[] = [];
   searchQuery: string = '';
 
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
   constructor(private recipeService: RecipeService, private messageService: MessageService) {
     this.recipeForm = new FormGroup({
@@ -107,6 +108,7 @@ export class DashboardComponent implements OnInit {
           this.loadAllRecipes();  // Reload recipes after successful update
           this.displayDialog = false;
           this.selectedRecipeId = null;  // Clear the selectedRecipeId
+          this.clearInputFile();
         },
         (error) => {
           this.messageService.add({ severity: 'error', summary: 'Pogreška',
@@ -121,6 +123,7 @@ export class DashboardComponent implements OnInit {
             detail: 'Recept je uspješno objavljen.' });
           this.loadAllRecipes();  // Reload recipes after successful submission
           this.displayDialog = false;
+          this.clearInputFile();
         },
         (error) => {
           this.messageService.add({ severity: 'error', summary: 'Pogreška',
@@ -128,10 +131,11 @@ export class DashboardComponent implements OnInit {
         }
       );
     }
+  }
 
-    // Reset the form after submission
-    this.recipeForm.reset();
-    this.selectedFile = null;
+  clearInputFile(): void {
+    const inputFile = document.getElementById('fileInput') as HTMLInputElement;
+    inputFile.value = '';
   }
 
 

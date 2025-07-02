@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../dashboard/services/auth.service';
+import { AuthResponse } from '../models/auth-response';
 
 @Component({
   selector: 'app-login',
@@ -26,37 +27,20 @@ export class LoginComponent {
   ) {}
 
   ngOnInit(): void {
-    const storedEmail = localStorage.getItem('email');
-    const storedPassword = localStorage.getItem('password');
-
-    if (storedEmail && storedPassword) {
-      this.email = storedEmail;
-      this.password = storedPassword;
-      this.rememberMe = true;
-    }
   }
 
   login(): void {
-    const validEmail = 'mom@kitchen.com';
-    const validPassword = 'kitchen123';
 
-    if (this.email === validEmail && this.password === validPassword) {
-      this.messageService.add({ severity: 'success', summary: 'Uspjeh', detail: 'Uspješno ste se prijavili.' });
-
-      setTimeout(() => {
-        if (this.rememberMe) {
-          localStorage.setItem('email', this.email);
-          localStorage.setItem('password', this.password);
-        } else {
-          localStorage.removeItem('email');
-          localStorage.removeItem('password');
-        }
-
-        this.authService.login(); 
-        this.router.navigate(['dashboard']);
-      }, 1000);
-    } else {
-      this.messageService.add({ severity: 'error', summary: 'Pogreška', detail: 'Neispravan email ili lozinka.' });
+    let loginRequest = {
+      username: this.email,
+      password: this.password
     }
+
+    this.authService.login(loginRequest).subscribe((response: AuthResponse) => {
+      localStorage.setItem('token', response.token);
+      this.router.navigateByUrl('dashboard');
+    }, (error) => {
+      console.log("Error loging in: " + error.error)
+    })
   }
 }

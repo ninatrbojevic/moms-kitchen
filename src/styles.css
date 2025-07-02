@@ -420,7 +420,7 @@ section,
 --------------------------------------------------------------*/
 .section-title {
   text-align: center;
-  padding-bottom: 60px;
+  padding-bottom: 40px;
   position: relative;
 }
 
@@ -581,6 +581,7 @@ section,
 .favorites .favorite-member .member-img {
   position: relative;
   overflow: hidden;
+  aspect-ratio: 1.5;
 }
 
 .favorites .favorite-member .member-img:after {
@@ -776,8 +777,8 @@ section,
   cursor: pointer;
   margin-bottom: 15px;
   max-width: 80%;
-  height: auto;
   border-radius: 10px;
+  aspect-ratio: 1.5;
 }
 
 .menu .tab-content .menu-item h4 {
