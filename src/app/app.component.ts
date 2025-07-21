@@ -1,11 +1,13 @@
 import { Component, Renderer2, OnInit } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { AuthService } from './dashboard/services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -13,7 +15,7 @@ export class AppComponent implements OnInit {
   title = 'moms-kitchen';
   activeLink: string = '#hero';
 
-  constructor(private renderer: Renderer2, private router: Router) {
+  constructor(private renderer: Renderer2, private router: Router, private authService: AuthService) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
@@ -41,6 +43,10 @@ export class AppComponent implements OnInit {
 
   setActive(link: string) {
     this.activeLink = link;
+    
+    if(this.isUserLogged()){
+      this.logout();
+    }
   }
 
   setupScrollSpy() {
@@ -107,4 +113,8 @@ export class AppComponent implements OnInit {
       closeIcon.style.display = 'none';
     }
   }
+
+  isUserLogged = () => this.authService.isLoggedIn();
+
+  logout = () => this.authService.logout();
 }

@@ -47,7 +47,7 @@
         <div class="mb-4">
           <h1>Fotografija jela:</h1>
           <div *ngIf="selectedRecipeId != null">
-            <img class="recipe-image-preview" [src]="'data:image/jpeg;base64, ' + selectedRecipe.imageData " alt="">
+            <img class="recipe-image-preview" [src]="'data:image/jpeg;base64, ' + selectedRecipe?.imageData " alt="">
           </div>
           <input id="fileInput" type="file" class="form-control" (change)="onFileSelected($event)">
         </div>
